@@ -20,6 +20,7 @@ app.post('/', function(req, res) {
   req.setEncoding('utf-8');
   req.on('data', function (data) { text += data; });
   req.on('end', function () {
+    res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify(extractEntities(text)));
   });
 });
