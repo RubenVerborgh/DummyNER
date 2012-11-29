@@ -1,0 +1,14 @@
+{
+  "name": "DummyNER",
+  "version": "0.1.0",
+  "description": "Dummy Named-Entity Recognition Server",
+  "author": "Ruben Verborgh <ruben.verborgh@gmail.com>",
+  "keywords": ["NER", "named-entity recognition", "dummy"],
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "dependencies": {
+    "express": "~3.0.3",
+    "node-markdown": "~0.1.1"
+  }
+}
