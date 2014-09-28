@@ -4,6 +4,7 @@ var express = require('express'),
     md = require("node-markdown").Markdown;
 
 var maxEntityCount = 3;
+var errorRate = 0.15;
 
 var app = express();
 
@@ -21,7 +22,12 @@ app.post('/', function(req, res) {
   req.on('data', function (data) { text += data; });
   req.on('end', function () {
     res.setHeader('Content-Type', 'application/json');
-    res.send(JSON.stringify(extractEntities(text)));
+    if (Math.random() > errorRate)
+      res.status(200).send(JSON.stringify(extractEntities(text)));
+    else
+      res.status(500).send(JSON.stringify({
+        message: 'Random error ' + Math.floor(100 * Math.random())
+      }));
   });
 });
 
