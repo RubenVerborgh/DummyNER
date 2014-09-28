@@ -23,7 +23,7 @@ app.post('/', function(req, res) {
   req.on('end', function () {
     res.setHeader('Content-Type', 'application/json');
     if (Math.random() > errorRate)
-      res.status(200).send(JSON.stringify(extractEntities(text)));
+      res.status(200).send(JSON.stringify({ entities: extractEntities(text) }));
     else
       res.status(500).send(JSON.stringify({
         message: 'Random error ' + Math.floor(100 * Math.random())
